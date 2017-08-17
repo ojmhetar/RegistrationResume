@@ -43,16 +43,13 @@ app.get('/', function(req, res) {
 	res.sendfile(__dirname + '/public/index.html');
 });
 app.post('/post', function(req, res, next){
-
- console.log('FIRST TEST: ' + JSON.stringify(req.files));
- console.log('second TEST: ' +req.files.resume.name);
+	
  fs.readFile(req.files.resume.path, function (err, data) {
-        var newPath = "./uploadDir"+req.files.resume.name;
+        var newPath = "./uploadDir" + req.files.resume.name;
         fs.writeFile(newPath, data, function (err) {
-          res.send("hi");  
+          res.send("Upload complete.");  
         });
     });
- //res.redirect("home");
 
 });
 
